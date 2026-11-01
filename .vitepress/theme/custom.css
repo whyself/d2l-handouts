@@ -72,6 +72,29 @@
 .vp-doc .hl { color: var(--warn); font-weight: 600; }
 .vp-doc .muted { color: var(--ink-3); }
 .vp-doc .en { color: var(--ink-3); font-size: .86em; font-weight: 400; }
+
+/* ---------- 术语补充解释：正文里点开虚线下划线 ---------- */
+.vp-doc .term {
+  font: inherit; color: inherit; text-align: inherit; background: none; border: 0; padding: 0; margin: 0;
+  cursor: help; border-bottom: 1px dashed color-mix(in srgb, var(--accent) 55%, transparent);
+  transition: color .15s, border-color .15s;
+}
+.vp-doc .term:hover, .vp-doc .term:focus-visible { color: var(--accent); border-bottom-color: var(--accent); outline: none; }
+.term-pop {
+  position: fixed; z-index: 130; width: min(320px, calc(100vw - 24px));
+  background: var(--paper); border: 1px solid var(--line); border-radius: 10px;
+  box-shadow: var(--shadow); padding: 10px 12px;
+  font-size: 13.5px; line-height: 1.7; color: var(--ink-2);
+}
+.term-pop-h { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
+.term-pop-h b { color: var(--ink); font-size: 14px; }
+.term-pop-h .en { color: var(--ink-3); font-size: 12px; font-weight: 400; }
+.term-pop-h .tag { font-size: 10.5px; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 0 4px; line-height: 16px; }
+.term-pop-x { margin-left: auto; border: 0; background: none; color: var(--ink-3); font-size: 16px; line-height: 1; cursor: pointer; padding: 0 2px; }
+.term-pop-x:hover { color: var(--accent); }
+.term-pop p { margin: 6px 0 0; }
+.term-pop .see { color: var(--ink-3); font-size: 12px; }
+@media (max-width: 640px) { .term-pop { font-size: 13px; } }
 .vp-doc mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
 .vp-doc mjx-container[display="true"] { padding: 4px 0; }
 /* 长内联公式在窄屏会撑破正文（mjx-container 是 inline，管不住子元素），让公式 SVG 自己等比收缩 */
@@ -189,5 +212,6 @@
   .two-col { grid-template-columns: 1fr !important; }
 }
 @media print {
-  .widget, .VPNav, .VPSidebar, .VPLocalNav, .aside, .qa-reveal { display: none !important; }
+  .widget, .VPNav, .VPSidebar, .VPLocalNav, .aside, .qa-reveal, .term-pop { display: none !important; }
+  .vp-doc .term { border-bottom: 0; }
 }

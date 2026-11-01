@@ -2,7 +2,7 @@
 
 《动手学深度学习》（Dive into Deep Learning）的中文交互式整理讲义。每讲对应原书一章：概念讲清楚之后，再配一个能动手的小组件把直觉跑一遍。
 
-网站基于 VitePress 构建，视觉与结构沿用 [crypto-handouts](https://github.com/whyself/crypto-handouts) 的规范：暖纸底、陶土橙主色、带色边的提示框、先想再看的 Q 卡、原书图表全部重绘或收录。
+网站基于 VitePress 构建，视觉与结构沿用 [crypto-handouts](https://github.com/whyself/crypto-handouts) 的规范：暖纸底、陶土橙主色、带色边的提示框、先想再看的 Q 卡、原书图表全部重绘或收录。正文里带虚线下划线的是「术语补充」——点一下就能看到它在当前这一讲里的含义，只对原文没讲清楚的新词生效。
 
 > 当前状态：01 引言、03 线性神经网络、04 多层感知机、08 循环神经网络、09 现代循环神经网络、10 注意力机制已完稿（原书图表全收录，共 46 个交互演示）；02、05–07 待撰写。主题、容器语法与写作规范见 [AUTHORING.md](AUTHORING.md)。
 
