@@ -53,6 +53,36 @@ export function annotate(root: HTMLElement, chapter: string) {
   if (!entries || !entries.length) return
 
   const pending = new Map(entries.map(e => [e.term, e]))
+  // 只保留“包含其它术语”的长词，用来判断某次命中是不是切在长词内部
+  const supersets = entries
+    .map(e => e.term)
+    .filter(t => entries.some(o => o.term !== t && t.includes(o.term)))
+
+  const isAscii = (t: string) => /^[\x00-\x7F]+$/.test(t)
+
+  // 边界检查：拉丁词要有词边界，中文复合词不从连字符中间切
+  function badEdge(text: string, i: number, term: string) {
+    const prev = text[i - 1]
+    const next = text[i + term.length]
+    if (isAscii(term)) {
+      return (!!prev && /[A-Za-z0-9]/.test(prev)) || (!!next && /[A-Za-z0-9]/.test(next))
+    }
+    return (!!prev && /[-－—]/.test(prev)) || (!!next && /[-－—]/.test(next))
+  }
+
+  // 命中位置是否落在某个更长的术语里（例如「梯度」落在「梯度下降」中间）
+  function covered(text: string, i: number, term: string) {
+    for (const t of supersets) {
+      if (t.length <= term.length || !t.includes(term)) continue
+      let p = text.indexOf(t)
+      while (p >= 0) {
+        if (p <= i && i < p + t.length) return true
+        p = text.indexOf(t, p + 1)
+      }
+    }
+    return false
+  }
+
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT)
   const nodes: Text[] = []
   while (walker.nextNode()) nodes.push(walker.currentNode as Text)
@@ -71,13 +101,8 @@ export function annotate(root: HTMLElement, chapter: string) {
       for (const [term, entry] of pending) {
         const i = text.indexOf(term)
         if (i < 0) continue
-        // 拉丁词要求词边界，否则 logit 会切进 logits、GPU 会切进 GPUs
-        if (/^[\x00-\x7F]+$/.test(term)) {
-          const prev = text[i - 1]
-          const next = text[i + term.length]
-          if (prev && /[A-Za-z0-9]/.test(prev)) continue
-          if (next && /[A-Za-z0-9]/.test(next)) continue
-        }
+        if (badEdge(text, i, term)) continue
+        if (covered(text, i, term)) continue
         if (!hit || i < hit.i || (i === hit.i && term.length > hit.term.length)) {
           hit = { i, term, entry }
         }

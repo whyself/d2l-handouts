@@ -65,6 +65,84 @@ export const GLOSSARY: Record<string, TermEntry[]> = {
       term: '多臂赌博机',
       en: 'multi-armed bandit',
       tip: '只有若干可选动作、每次选择换来的回报未知，需要在「试试别的」和「选当前最好的」之间权衡。它是强化学习最简的特例。'
+    },
+    {
+      term: '目标函数',
+      en: 'objective function',
+      tip: '给模型打分的那把尺子：训练就是不断调参数，让这个分数往「好」的方向走。回归常用平方误差，分类常用交叉熵。',
+      see: '§1.2.3'
+    },
+    {
+      term: '数据集',
+      en: 'dataset',
+      tip: '一组样本的集合，模型从里面找规律。训练、验证、测试只是同一批数据按用途切出来的不同部分。'
+    },
+    {
+      term: '独立同分布',
+      en: 'i.i.d.',
+      tip: '每个样本都从同一个分布里独立抽取，样本之间互不影响。真实数据只是近似满足，时间序列就不满足。'
+    },
+    {
+      term: '特征',
+      en: 'feature',
+      tip: '描述一个样本的某个可测量属性，比如房屋的面积、房龄。模型的所有输入都是由特征拼成的向量。'
+    },
+    {
+      term: '替代目标',
+      en: 'surrogate objective',
+      tip: '真正关心的指标（如错误率）不可导或太难算时，换一个能求导、能优化的损失来间接优化它。'
+    },
+    {
+      term: '梯度下降',
+      en: 'gradient descent',
+      tip: '沿负梯度方向一步一步挪参数，每步挪多远由学习率决定。本讲只点了名字，更新式在第 3 章。',
+      see: '第 3 章 §3.1.1.4'
+    },
+    {
+      term: '交叉熵',
+      en: 'cross-entropy',
+      tip: '分类任务最常用的损失：看模型给正确类别留了多少概率，留得越少罚得越重。本讲只点名，第 3 章才展开。',
+      see: '第 3 章 §3.4'
+    },
+    {
+      term: '实体',
+      en: 'entity',
+      tip: '文本里具体指称的对象，比如人名、地名、机构名。信息抽取要先把它从句子里识别并标出来。'
+    },
+    {
+      term: '因果关系',
+      en: 'causality',
+      tip: '一个变量真的导致另一个变量变化，而不只是统计上一起变。预测模型学到的大多是相关，做干预决策才需要因果。'
+    },
+    {
+      term: '概率图模型',
+      en: 'probabilistic graphical model',
+      tip: '用节点表示随机变量、用边表示条件依赖的概率模型。隐马尔可夫模型就是其中一种。'
+    },
+    {
+      term: '生成对抗性网络',
+      en: 'generative adversarial network',
+      tip: '一个网络专门造假样本、另一个专门分辨真假，两者对着训练，逼生成器越造越像。'
+    },
+    {
+      term: 'Q网络',
+      en: 'Q-network',
+      tip: '强化学习里用神经网络近似「在状态 s 下做动作 a 有多值」的 Q 函数。DQN 就是靠它从游戏画面学会打雅达利。'
+    },
+    {
+      term: '马尔可夫决策过程',
+      en: 'Markov decision process',
+      tip: '强化学习的标准数学框架：状态、动作、奖励、转移概率俱全，并假设下一步只取决于当前状态。'
+    },
+    {
+      term: '上下文赌博机',
+      en: 'contextual bandit',
+      tip: '多臂赌博机的升级版：每次选择前还能看到一些上下文（用户、场景），策略要随上下文调整。'
+    },
+    {
+      term: '表示学习',
+      en: 'representation learning',
+      tip: '不靠人手工设计特征，让模型自己学出一组好用的中间表示。深度学习「深」的意义就在于逐级学表示。'
     }
   ],
 
@@ -107,6 +185,34 @@ export const GLOSSARY: Record<string, TermEntry[]> = {
       term: '仿射变换',
       en: 'affine transformation',
       tip: '先做线性变换再加偏置，也就是 y = Wx + b。一个全连接层做的正是仿射变换，后面接非线性才成为「多层」。'
+    },
+    {
+      term: '精度',
+      en: 'accuracy',
+      tip: '分类任务里预测正确的样本比例。它好懂，但类别不平衡时会被「全猜多数类」骗到，所以常要配合别的指标。',
+      see: '§3.6.5'
+    },
+    {
+      term: '偏置',
+      en: 'bias',
+      tip: '线性模型里的常数项 b，把所有预测整体平移。没有它，模型只能过原点，拟合能力会差一截。'
+    },
+    {
+      term: '拟合',
+      en: 'fit',
+      tip: '调参数让模型的预测尽量贴近训练数据。拟合得好不好，最终要看它在没见过的数据上还准不准。'
+    },
+    {
+      term: '验证数据集',
+      en: 'validation dataset',
+      tip: '从训练数据里单独留出的一份，用来挑超参数、比较模型，不参与梯度更新。它和测试集不能混用。',
+      see: '第 4 章 §4.4.2.1'
+    },
+    {
+      term: '似然',
+      en: 'likelihood',
+      tip: '把观测到的数据固定住、把概率看成参数的函数：哪组参数让这批数据最可能出现，哪组参数的似然就最大。',
+      see: '§3.1.3'
     }
   ],
 
@@ -154,6 +260,87 @@ export const GLOSSARY: Record<string, TermEntry[]> = {
       term: '早停',
       en: 'early stopping',
       tip: '盯着验证集误差，一旦它开始回升就停止训练。相当于拿「训练了多久」当正则化手段。'
+    },
+    {
+      term: '过拟合',
+      en: 'overfitting',
+      tip: '训练误差压得很低，验证误差却明显更高：模型把训练集里的噪声和偶然细节也背下来了。',
+      see: '§4.4'
+    },
+    {
+      term: '欠拟合',
+      en: 'underfitting',
+      tip: '训练误差本身就降不下去，说明模型太简单或特征不够，连训练数据里的规律都没学会。',
+      see: '§4.4.3'
+    },
+    {
+      term: '隐藏表示',
+      en: 'hidden representation',
+      tip: '隐藏层算出来的那组特征。它替代了手工设计的特征，最后一层再在这个表示上做线性预测。'
+    },
+    {
+      term: 'pReLU',
+      en: 'parameterized ReLU',
+      tip: '带参数的 ReLU：负半轴的斜率不是固定的 0，而是一个可学习的数，让负区间也能透出一点梯度。'
+    },
+    {
+      term: '岭回归',
+      en: 'ridge regression',
+      tip: '线性回归加 L2 惩罚：系数被整体压小但一般不会正好为 0，适合每个特征都还有点用的时候。'
+    },
+    {
+      term: '套索回归',
+      en: 'lasso regression',
+      tip: '线性回归加 L1 惩罚：它会把一部分系数压到正好为 0，相当于顺手做了一次特征选择。'
+    },
+    {
+      term: '多数类',
+      en: 'majority class',
+      tip: '样本里数量最多的那个类别。类别不平衡时，无脑全猜它也能刷出很高的精度，所以别只看精度。'
+    },
+    {
+      term: '偏差-方差权衡',
+      en: 'bias-variance tradeoff',
+      tip: '模型太简单，偏差大、容易欠拟合；太灵活，方差大、容易过拟合。调模型复杂度就是在两者之间找平衡。'
+    },
+    {
+      term: '前向传播',
+      en: 'forward propagation',
+      tip: '从输入开始逐层算到输出，并把每层的中间结果存下来，供反向传播求梯度时使用。',
+      see: '§4.7.1'
+    },
+    {
+      term: '反向传播',
+      en: 'backpropagation',
+      tip: '从损失出发，按链式法则逐层往回算每个参数的梯度。前向算值、反向算梯度，合起来就是一次训练迭代。',
+      see: '§4.7.3'
+    },
+    {
+      term: '链式规则',
+      en: 'chain rule',
+      tip: '复合函数求导时把各层导数乘起来：外层导数乘内层导数。反向传播就是把它系统地用到整张计算图上。'
+    },
+    {
+      term: '梯度爆炸',
+      en: 'gradient exploding',
+      tip: '深层网络里梯度连乘后指数级变大，一步更新就把参数冲出稳定区间，损失很容易变成 nan 或直接发散。',
+      see: '§4.8.1'
+    },
+    {
+      term: '非平稳分布',
+      en: 'nonstationary distribution',
+      tip: '数据分布本身随时间缓慢漂移，模型不重新训练就会越来越不准，比如用户口味、交通模式的变化。',
+      see: '§4.9.2.3'
+    },
+    {
+      term: '源分布',
+      en: 'source distribution',
+      tip: '训练样本实际来自的那个分布，通常记作 q(x)。协变量偏移纠正要拿它和目标分布的密度比给样本加权。'
+    },
+    {
+      term: '目标分布',
+      en: 'target distribution',
+      tip: '模型部署时真正要面对的那个分布，通常记作 p(x)。它和训练时的源分布不一致，就是分布偏移。'
     }
   ],
 
@@ -190,6 +377,32 @@ export const GLOSSARY: Record<string, TermEntry[]> = {
       en: 'truncation',
       tip: '反向传播只回溯最近 τ 个时间步，不碰整条序列。用一点信息损失换来可控的计算量与显存。',
       see: '§8.7'
+    },
+    {
+      term: '字符级语言模型',
+      en: 'character-level language model',
+      tip: '把文本拆成单个字符当词元，让模型逐字符预测下一个字符。词表小，但序列更长。',
+      see: '§8.4.3'
+    },
+    {
+      term: '隐变量自回归模型',
+      en: 'latent autoregressive model',
+      tip: '除了保留最近几个观测，还维护一个从未被观测到的隐变量来概括更长的历史，再据此预测下一步。'
+    },
+    {
+      term: '循环层',
+      en: 'recurrent layer',
+      tip: '每个时间步复用同一组权重、并把上一步的隐状态接进来一起算的层。RNN 就是由它堆成的。'
+    },
+    {
+      term: '覆盖性',
+      en: 'coverage',
+      tip: '每批数据要能覆盖到序列的不同片段，而不是翻来覆去只取开头那一截。'
+    },
+        {
+      term: '分离梯度',
+      tip: '把上一步的隐状态 detach 掉再喂给这一步，梯度就不再往更早的时间步回传，计算量因此可控。',
+      see: '§8.7.1.2'
     }
   ],
 
@@ -216,6 +429,40 @@ export const GLOSSARY: Record<string, TermEntry[]> = {
       en: 'encoder-decoder',
       tip: '先把整个输入序列读成一个中间表示（编码器），再据此逐步生成输出（解码器）。中间表示长度固定，这也是它的瓶颈。',
       see: '§9.6'
+    },
+    {
+      term: '动态规划',
+      en: 'dynamic programming',
+      tip: '把大问题拆成互相重叠的子问题，把子问题的解存下来复用。HMM 的前向递归靠它把指数级求和降到 O(kT)。',
+      see: '§9.4.1'
+    },
+    {
+      term: '统计机器翻译',
+      en: 'statistical machine translation',
+      tip: '神经方法之前的主流：把翻译拆成翻译模型、语言模型等部件，靠统计计数和短语表拼出译文。'
+    },
+    {
+      term: '神经机器翻译',
+      en: 'neural machine translation',
+      tip: '用一个端到端的神经网络直接把源句映射成译文，不再分别训练翻译模型和语言模型。'
+    },
+    {
+      term: '序列到序列',
+      en: 'sequence to sequence',
+      tip: '输入和输出都是变长序列的任务范式。典型实现是编码器先把源序列压成状态，解码器再逐步生成。',
+      see: '§9.7'
+    },
+    {
+      term: '贪心搜索',
+      en: 'greedy search',
+      tip: '每步都选当前条件概率最高的词元。快，但一步短视就可能错过整条得分更高的序列。',
+      see: '§9.8.1'
+    },
+    {
+      term: '穷举搜索',
+      en: 'exhaustive search',
+      tip: '把所有可能的输出序列都算一遍再取最优。答案最可靠，但计算量随序列长度指数爆炸。',
+      see: '§9.8.2'
     }
   ],
 
@@ -255,6 +502,65 @@ export const GLOSSARY: Record<string, TermEntry[]> = {
       en: 'additive attention',
       tip: '用一个单隐层 MLP 算出 tanh(W_q q + W_k k) 作为评分。查询与键维度不同时也能用，代价是比点积慢。',
       see: '§10.3'
+    },
+    {
+      term: 'Transformer',
+      tip: '完全基于注意力、不靠循环的编码器-解码器架构。每个子层都是「注意力或前馈网络 + 残差 + 层规范化」。',
+      see: '§10.7'
+    },
+    {
+      term: 'Nadaraya-Watson 核回归',
+      en: 'Nadaraya-Watson kernel regression',
+      tip: '按距离给每个训练点一个核权重，再对它们的标签加权平均。它是注意力机制最朴素的样板。',
+      see: '§10.2'
+    },
+    {
+      term: '注意力提示',
+      en: 'attention cue',
+      tip: '引导注意力落在哪里的线索：可以来自环境（颜色、位置突出），也可以来自主观意图（想找的东西）。'
+    },
+        {
+      term: '注意力汇聚',
+      en: 'attention pooling',
+      tip: '按注意力权重把一组值加权求和，得到查询对应的输出。权重由查询和键的匹配程度决定。',
+      see: '§10.2'
+    },
+    {
+      term: '非参数的注意力汇聚',
+      en: 'nonparametric attention pooling',
+      tip: '不学任何参数，直接用固定核（如高斯核）按距离算权重，再做加权平均。'
+    },
+    {
+      term: '嵌入',
+      en: 'embedding',
+      tip: '把离散词元映射成的稠密向量。和第 8 章的独热相比，它维度低，还能从数据里学出词与词的相似性。'
+    },
+    {
+      term: '子空间表示',
+      en: 'representation subspace',
+      tip: '把查询、键、值投影到更低维的子空间里。每个头在自己的子空间里关注一种关系。'
+    },
+    {
+      term: '线性投影',
+      en: 'linear projection',
+      tip: '用可学习的矩阵把向量乘一次，换成另一组维度或语义的表示。多头注意力里每个头各有一组。'
+    },
+    {
+      term: '层规范化',
+      en: 'layer normalization',
+      tip: '对每个样本自己在某一层的全部特征减均值、除标准差，再做缩放平移。它不依赖批量大小，适合变长序列。',
+      see: '§10.7.3'
+    },
+    {
+      term: '多头自注意力',
+      en: 'multi-head self-attention',
+      tip: '在自注意力里并行做多组线性投影和打分，再把各头输出拼起来。Transformer 编码器的第一个子层就是它。'
+    },
+    {
+      term: '残差连接',
+      en: 'residual connection',
+      tip: '把子层的输入原样加回输出：x + sublayer(x)。这条捷径让梯度能绕过子层直接回传，深层网络才训得动。',
+      see: '§10.7.3'
     }
   ]
 }
