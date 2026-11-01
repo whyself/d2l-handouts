@@ -4,7 +4,7 @@
 
 网站基于 VitePress 构建，视觉与结构沿用 [crypto-handouts](https://github.com/whyself/crypto-handouts) 的规范：暖纸底、陶土橙主色、带色边的提示框、先想再看的 Q 卡、原书图表全部重绘或收录。
 
-> 当前状态：**骨架已完成，正文待撰写**。主题、组件、容器语法、写作规范与部署流水线都已就位，按 [AUTHORING.md](AUTHORING.md) 逐讲补写即可。
+> 当前状态：第 1 章「引言」已完稿（原文全收录 + 8 个交互演示），其余各讲待撰写。主题、容器语法与写作规范见 [AUTHORING.md](AUTHORING.md)。
 
 ## 本地预览
 

@@ -66,10 +66,11 @@
 ::::
 
 行内出处：<Src s="3.1" />
-图片：<Fig src="/img/03/3.1-linear-regression.svg" cap="说明" s="3.1" />      size="sm" / "md" 可选
+图片：<Fig src="/img/03/3.1-linear-regression.svg" cap="说明" s="3.1" />      size="sm" / "md" 可选；原书给了像素宽度就加 w="500"，按原样还原
 并排：<FigGrid> 两个 <Fig> </FigGrid>，更高用 <FigGrid tall>
 双栏：<Cols ratio="1fr 1.2fr"> 左文右图 </Cols>
 交互组件：<L03SoftmaxDemo />（单独一行，前后空行）
+表格题注：<div class="tab-cap">表 3.4.1　标题 <span class="src">§3.4</span></div> 放在表格上方
 ```
 
 注意事项：

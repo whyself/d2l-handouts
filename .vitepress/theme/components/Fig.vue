@@ -1,10 +1,17 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { withBase } from 'vitepress'
 import { lightbox } from '../lib/store'
 
-// size: sm / md / full；s 为原书出处章节号
-const props = defineProps<{ src: string; cap?: string; s?: string; size?: string }>()
+// size: sm / md / full；w 为原书给出的像素宽度；s 为原书出处章节号
+const props = defineProps<{ src: string; cap?: string; s?: string; size?: string; w?: string | number }>()
 const url = withBase(props.src)
+// 原书图注写 :width:`200px` 时照原样还原，窄屏仍不超过容器
+const maxW = computed(() => {
+  if (!props.w) return undefined
+  const v = String(props.w).trim()
+  return /^\d+(\.\d+)?$/.test(v) ? `${v}px` : v
+})
 
 function open() {
   lightbox.src = url
@@ -15,7 +22,7 @@ function open() {
 
 <template>
   <figure class="fig" :class="size">
-    <img :src="url" :alt="(cap || '').replace(/<[^>]+>/g, '')" loading="lazy" @click="open">
+    <img :src="url" :alt="(cap || '').replace(/<[^>]+>/g, '')" loading="lazy" :style="{ maxWidth: maxW }" @click="open">
     <figcaption v-if="cap || s"><span v-html="cap" /><span v-if="s" class="src">§{{ s }}</span></figcaption>
   </figure>
 </template>
@@ -27,7 +34,7 @@ function open() {
   background: #fff; cursor: zoom-in; transition: box-shadow .2s;
 }
 .fig img:hover { box-shadow: var(--shadow); }
-.fig.sm img { max-width: 340px; width: 100%; }
-.fig.md img { max-width: 540px; width: 100%; }
+.fig.sm img { width: 100%; max-width: 340px; }
+.fig.md img { width: 100%; max-width: 540px; }
 figcaption { font-size: 13.5px; color: var(--ink-3); margin-top: 6px; line-height: 1.6; }
 </style>

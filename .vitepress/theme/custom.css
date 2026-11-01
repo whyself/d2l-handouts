@@ -131,6 +131,7 @@
 /* 表格 */
 .vp-doc table { font-size: 14.5px; }
 .vp-doc table.mapping td, .vp-doc table.mapping th { padding: 4px 6px; text-align: center; font-family: var(--vp-font-family-mono); }
+.vp-doc .tab-cap { font-size: 13.5px; color: var(--ink-3); text-align: center; margin: 22px 0 6px; line-height: 1.6; }
 
 /* ---------- 交互组件通用 ---------- */
 .widget { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); margin: 26px 0; overflow: hidden; }

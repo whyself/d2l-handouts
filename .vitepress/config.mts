@@ -30,6 +30,7 @@ export default defineConfig({
   cleanUrls: true,
   srcExclude: ['AUTHORING.md', 'README.md'],
   lastUpdated: true,
+  head: [['link', { rel: 'icon', href: '/d2l-handouts/logo.svg', type: 'image/svg+xml' }]],
   markdown: {
     math: true,
     config(md) {
@@ -71,7 +72,8 @@ export default defineConfig({
       {
         text: '本讲义',
         items: [
-          { text: '讲义目录', link: '/lectures/' }
+          { text: '讲义目录', link: '/lectures/' },
+          { text: '01 引言', link: '/lectures/01' }
         ]
       }
     ],
