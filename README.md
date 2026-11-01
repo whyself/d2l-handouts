@@ -49,9 +49,14 @@ npm run preview    # 本地预览构建结果
 
 ## 部署
 
-推送到 `main` 分支后，GitHub Actions 会自动构建并发布到 GitHub Pages（见 `.github/workflows/deploy.yml`）。首次使用需在仓库 Settings → Pages 里把 Source 设为 GitHub Actions。
+## 部署
 
-站点部署在 `https://<用户名>.github.io/d2l-handouts/`，因此 `config.mts` 里 `base` 固定为 `'/d2l-handouts/'`。仓库改名时记得同步修改。
+- 站点：<https://whyself.github.io/d2l-handouts/>
+- 仓库：<https://github.com/whyself/d2l-handouts>
+
+推送到 `main` 分支后，GitHub Actions 会自动构建并发布到 GitHub Pages（见 `.github/workflows/deploy.yml`）。Pages 的 Source 已设为 GitHub Actions，工作流里的 `configure-pages` 带 `enablement: true`，将来换新仓库也能自动开启。
+
+`config.mts` 里 `base` 固定为 `'/d2l-handouts/'`，与仓库名一致；仓库改名时要同步改 `base`、favicon 路径和上面的地址。
 
 ## 版权
 
