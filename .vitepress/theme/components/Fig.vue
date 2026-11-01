@@ -6,11 +6,12 @@ import { lightbox } from '../lib/store'
 // size: sm / md / full；w 为原书给出的像素宽度；s 为原书出处章节号
 const props = defineProps<{ src: string; cap?: string; s?: string; size?: string; w?: string | number }>()
 const url = withBase(props.src)
-// 原书图注写 :width:`200px` 时照原样还原，窄屏仍不超过容器
+// 原书图注写 :width:`200px` 时照原样还原，窄屏仍不超过容器（内联样式会覆盖样式表，必须用 min() 夹住）
 const maxW = computed(() => {
   if (!props.w) return undefined
   const v = String(props.w).trim()
-  return /^\d+(\.\d+)?$/.test(v) ? `${v}px` : v
+  const px = /^\d+(\.\d+)?$/.test(v) ? `${v}px` : v
+  return `min(100%, ${px})`
 })
 
 function open() {

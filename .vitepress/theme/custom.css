@@ -74,6 +74,8 @@
 .vp-doc .en { color: var(--ink-3); font-size: .86em; font-weight: 400; }
 .vp-doc mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
 .vp-doc mjx-container[display="true"] { padding: 4px 0; }
+/* 长内联公式在窄屏会撑破正文（mjx-container 是 inline，管不住子元素），让公式 SVG 自己等比收缩 */
+.vp-doc mjx-container svg { max-width: 100%; height: auto; }
 
 /* ---------- 讲义开头 ---------- */
 .lec-kicker { color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: .14em; margin-bottom: -8px; }
@@ -140,6 +142,8 @@
 .widget-b { padding: 14px 18px 18px; }
 .widget-note { font-size: 13.5px; color: var(--ink-3); margin: 0 0 10px; line-height: 1.7; }
 .widget svg text { font-family: var(--vp-font-family-base); }
+/* 组件里的 SVG 常按设计稿写死 width，窄屏统一按 viewBox 等比收缩 */
+.widget svg { max-width: 100%; height: auto; }
 .ctrl { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; margin: 10px 0; }
 .ctrl label { font-size: 13.5px; color: var(--ink-2); display: inline-flex; align-items: center; gap: 8px; }
 .ctrl input[type=text], .ctrl textarea, .ctrl select {

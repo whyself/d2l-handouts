@@ -4,7 +4,7 @@
 
 网站基于 VitePress 构建，视觉与结构沿用 [crypto-handouts](https://github.com/whyself/crypto-handouts) 的规范：暖纸底、陶土橙主色、带色边的提示框、先想再看的 Q 卡、原书图表全部重绘或收录。
 
-> 当前状态：第 1 章「引言」已完稿（原文全收录 + 8 个交互演示），其余各讲待撰写。主题、容器语法与写作规范见 [AUTHORING.md](AUTHORING.md)。
+> 当前状态：01 引言、03 线性神经网络、04 多层感知机、08 循环神经网络、09 现代循环神经网络、10 注意力机制已完稿（原书图表全收录，共 46 个交互演示）；02、05–07 待撰写。主题、容器语法与写作规范见 [AUTHORING.md](AUTHORING.md)。
 
 ## 本地预览
 
@@ -25,8 +25,7 @@ npm run preview    # 本地预览构建结果
 ```
 .
 ├─ index.md                 # 首页（hero + 分部分介绍）
-├─ lectures/
-│  └─ index.md              # 讲义目录、阅读约定、章节规划
+├─ lectures/                # 一讲一页：01、03、04、08、09、10
 ├─ public/img/<讲号>/        # 本讲用到的图片，按讲号分目录
 ├─ .vitepress/
 │  ├─ config.mts            # 站点配置、侧栏、容器语法插件

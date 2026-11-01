@@ -66,14 +66,22 @@ export default defineConfig({
     }
   },
   themeConfig: {
-    nav: [{ text: '讲义', link: '/lectures/' }],
+    nav: [{ text: '讲义', link: '/lectures/01' }],
     // 每新增一讲，就在这里加一行；分部分用大分组
     sidebar: [
       {
         text: '本讲义',
         items: [
-          { text: '讲义目录', link: '/lectures/' },
-          { text: '01 引言', link: '/lectures/01' }
+          { text: '01 引言', link: '/lectures/01' },
+          { text: '02 预备知识（待撰写）' },
+          { text: '03 线性神经网络', link: '/lectures/03' },
+          { text: '04 多层感知机', link: '/lectures/04' },
+          { text: '05 深度学习计算（待撰写）' },
+          { text: '06 卷积神经网络（待撰写）' },
+          { text: '07 现代卷积神经网络（待撰写）' },
+          { text: '08 循环神经网络', link: '/lectures/08' },
+          { text: '09 现代循环神经网络', link: '/lectures/09' },
+          { text: '10 注意力机制', link: '/lectures/10' }
         ]
       }
     ],

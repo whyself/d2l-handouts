@@ -8,7 +8,7 @@ hero:
   actions:
     - theme: brand
       text: 进入讲义目录
-      link: /lectures/
+      link: /lectures/01
     - theme: alt
       text: 原书中文版
       link: https://zh-v2.d2l.ai/
@@ -16,13 +16,13 @@ hero:
 features:
   - title: 第一部分 · 预备知识
     details: 引言、预备知识、线性神经网络、多层感知机、深度学习计算——先把动手的地基打牢。
-    link: /lectures/
+    link: /lectures/01
   - title: 第二部分 · 深度学习核心
     details: 卷积神经网络、现代卷积神经网络、循环神经网络、现代循环神经网络，逐层拆开看。
-    link: /lectures/
+    link: /lectures/01
   - title: 第三部分 · 前沿方向
     details: 注意力机制、优化算法、计算性能，以及计算机视觉与自然语言处理应用。
-    link: /lectures/
+    link: /lectures/01
   - title: 图表全部重绘
     details: 原书矢量图改用 SVG 或交互组件重画，位图按讲号收进 public/img，页面标注原书章节出处。
   - title: 交互演示
