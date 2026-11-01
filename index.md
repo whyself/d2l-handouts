@@ -7,7 +7,7 @@ hero:
   tagline: 依《动手学深度学习》（Dive into Deep Learning）整理的中文讲义，每个概念配可交互演示
   actions:
     - theme: brand
-      text: 进入讲义目录
+      text: 从 01 引言开始
       link: /lectures/01
     - theme: alt
       text: 原书中文版
